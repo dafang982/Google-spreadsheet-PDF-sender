@@ -46,7 +46,7 @@ function onOpen() {
 function sendAsPdf() {
     var configSheet = getConfigSheet();
     for (var i = 2; i < MAX_CONFIG_ROWS; i++) {
-	if (configSheet.getRange(i, 1).getValue()) {
+	if (configSheet.getRange(i, 2).getValue()) {
 	    sendForConfigRow(i);
 	} else {
 	    break;
