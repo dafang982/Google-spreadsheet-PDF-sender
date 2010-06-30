@@ -69,7 +69,18 @@ function sendForConfigRow(row) {
 	var docId = SpreadsheetApp.getActiveSpreadsheet().getId();
 	var url = SPREADSHEET_URL + docId + "&exportFormat=" + EXPORT_FORMAT + "&gid=" + sheetGid;
 	var auth = "AuthSub token=\"" + getConfig(row, TOKEN_CELL) + "\"";
-	var res = UrlFetchApp.fetch(url, {headers: {Authorization: auth}});
+	var attempts = 0;
+	while (attempts++ < 5) {
+	  try {
+	    var res = UrlFetchApp.fetch(url, {headers: {Authorization: auth}});
+	    break;
+	  } catch (e) {
+	    if (e.message.indexOf("Timeout") == -1) {
+	      Browser.msgBox("Error occurred when exporting spreadsheet:" + e.message);
+	      return;
+	    }
+	  }
+	}
 	var content = res.getContent();
 	var responseCode = res.getResponseCode();
 	if (responseCode != 200 || res.getContentText().indexOf("/ServiceLoginAuth") != -1) {
