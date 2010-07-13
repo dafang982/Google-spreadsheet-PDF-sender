@@ -88,7 +88,7 @@ function sendForConfigRow(row) {
 	    Browser.msgBox("Error occurred when exporting spreadsheet to pdf, it might be caused by auth token being expired");
 	    return;
 	}
-	attachments.push({fileName:sheetName +"_" + i + "." + EXPORT_FORMAT, content: content});
+	attachments.push({fileName:sheetName +"_" + i + "." + EXPORT_FORMAT, content: content, mimeType:"application/pdf"});
     }
     var bcc = getConfig(row, BCC_CELL);
     Logger.log("BCC to:" + bcc);
