@@ -29,8 +29,8 @@ var MAX_EXPORT_SHEETS = 50;
 var EXPORT_FORMAT = "pdf";
 
 function onOpen() {
-    var ss = SpreadsheetApp.getActiveSpreadsheet(),
-	menuEntries = [ {name: "Send as PDF", functionName: "sendAsPdf"}];
+    var ss = SpreadsheetApp.getActiveSpreadsheet();
+    menuEntries = [{name: "Send as PDF", functionName: "sendAsPdf"}];
     ss.addMenu("PDF Sender", menuEntries);
     var configSheet = getConfigSheet();
     configSheet.getRange(1, ENABLED_CELL).setValue("Enabled");
