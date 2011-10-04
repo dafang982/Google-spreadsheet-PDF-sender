@@ -23,7 +23,7 @@ var BODY_CELL = 6;
 var SHEET_NAME_CELL = 7;
 var SHEET_GID_CELL = 8;
 
-var SPREADSHEET_URL = "http://spreadsheets.google.com/feeds/download/spreadsheets/Export?key=";
+var SPREADSHEET_URL = "https://spreadsheets.google.com/feeds/download/spreadsheets/Export?key=";
 var MAX_CONFIG_ROWS = 1000;
 var MAX_EXPORT_SHEETS = 50;
 var EXPORT_FORMAT = "pdf";
